@@ -28,19 +28,11 @@ function(input, output, session) {
                      column(
                        width = 12,
                        fluidRow(
-                         div(
-                           style = "
-                             display: flex;
-                             flex-direction: row;
-                             align-items: flex-start;
-                             gap: 10px;
-                           ",
-                           tags$p(style = "padding-top: 10px;", 'Enter a number:'),
-                           uiOutput("input_number_ui"),
-                           actionButton('convert', 'Convert'), 
-                           actionButton('convert_previous', 'Convert Previous'),
-                           actionButton('convert_next', 'Convert Next')   
-                         )
+                         div(style="display: inline-block;vertical-align:top;", tags$p(style = "padding-top: 10px;", 'Enter a number:')),
+                         div(style="display: inline-block;vertical-align:top;", uiOutput("input_number_ui")),
+                         div(style="display: inline-block;vertical-align:top;", actionButton('convert', 'Convert')), 
+                         div(style="display: inline-block;vertical-align:top;", actionButton('convert_previous', 'Convert Previous')),
+                         div(style="display: inline-block;vertical-align:top; padding-bottom: 15px;", actionButton('convert_next', 'Convert Next'))   
                        ),
                        fluidRow(
                          uiOutput('error')
@@ -237,7 +229,7 @@ function(input, output, session) {
     names(df) <- c("Word", "All Phonemes in Word", "Position of Matching Phonemes",
                    "Number of Phonemes in Word", "Number of Letters in Word")
     DT::datatable(df, escape = F, selection = 'none',
-                  options = list(dom = "Bfrtip",
+                  options = list(dom = "Brtip",
                                  pageLength = table_length()))
   })
   
