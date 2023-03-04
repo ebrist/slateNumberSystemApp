@@ -20,8 +20,12 @@
   position: absolute;
   z-index: 99999;
   top: 12px;
-  right: 20px;
+  right: 50px;
   color: white;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus {
+    outline: none;
 }
 
 .material-switch>label:before {

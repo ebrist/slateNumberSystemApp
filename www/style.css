@@ -2,10 +2,27 @@ p {
   margin: 0;  
 }
 
+tr.even, tr.odd {
+    height: 33px;
+}
+
+:focus-visible {
+    outline: none;
+}
+
 .container-fluid {
   padding: 0px;
   overflow-x: auto;
 }
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+}
+
+.btn:focus-visible {
+  outline: none !important;
+}
+
 
 .navbar-header, .tab-content {
     padding-left: 15px;
@@ -37,14 +54,23 @@ ul.nav.navbar-nav {
     font-size: 16px;
 }
 
+.navbar-nav>li {
+    width: 200px;
+    text-align: center;
+}
+
 .dataTables_wrapper {
     position: relative;
     clear: both;
-    margin-top: -30px;
+    margin-top: 0;
 }
 
 table.dataTable, .dataTables_wrapper .dataTables_info {
     font-size: 14px;
+}
+
+.dataTables_info {
+    margin-left: 250px;  
 }
 
 label, .control-label, .help-block, .checkbox, .radio {
@@ -62,4 +88,21 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
     opacity: 100;
     right: 10px;
     font-size: 12px;
+}
+
+.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+    position: absolute;
+    display: inline-block;
+    right: 15px;
+    top: 13px;
+}
+
+.selectize-input.items.full.has-options.has-items {
+    height: 39px;
+    border-radius: 0px;
+}
+
+.selectize-input > * {
+    vertical-align: middle;
+    font-size: 16px;
 }

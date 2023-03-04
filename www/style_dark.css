@@ -16,11 +16,22 @@
   color: #d7d7d7;
 }
 
+.btn-default:hover, .btn-default:focus, .btn-default.focus {
+    color: #d5d5d5;
+    background-color: #12242e;
+    border-color: #103754;
+    outline: none;
+}
+
+body {
+  background-color: #12242e;
+}
+
 #dark_theme_ui {
   position: absolute;
   z-index: 99999;
   top: 12px;
-  right: 20px;
+  right: 50px;
   color: white;
 }
 
@@ -63,4 +74,59 @@
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     border: 1px solid rgb(255 255 255 / 30%);
+}
+
+.btn-default,
+.form-control, 
+.selectize-input.full,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:hover,
+.btn-default:active, .btn-default.active,
+.open>.dropdown-toggle.btn-default,
+.btn-default:active:hover,
+.open>.dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.open>.dropdown-toggle.btn-default.focus,
+.selectize-input, 
+.selectize-control.single .selectize-input.input-active,
+.selectize-dropdown, 
+.selectize-dropdown.form-control {
+    color: #d5d5d5;
+    background: none;
+    background-color: #15303e;
+    border-color: #103754;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus {
+    color: #d5d5d5;
+    background-color: #12242e;
+    border-color: #103754;
+}
+
+.selectize-control.single .selectize-input:after {
+  border-color: #707070 transparent transparent transparent;
+}
+
+.selectize-control.single .selectize-input.dropdown-active:after {
+  border-color: transparent transparent #707070 transparent;
+}
+
+
+.dropdown-menu.open, .dropdown-menu>li>a {
+  background: #12242e;
+  color: #d5d5d5;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: #15303e;
+  color: #d5d5d5;
+}
+
+.btn.dropdown-toggle.btn-default {
+    background-color: #12242e;
+    border-color: #12242e;
+    color: #d5d5d5;
 }

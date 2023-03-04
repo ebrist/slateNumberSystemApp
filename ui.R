@@ -10,7 +10,7 @@ fluidPage(
     ),
     color = 'white'
   ),
-  tags$head(tags$script(src = "enter_button.js")),
+  tags$head(tags$script(src = "customjs.js")),
   uiOutput('dark_theme_container'),
   uiOutput('app_ui')
 )
