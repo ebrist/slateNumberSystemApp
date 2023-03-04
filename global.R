@@ -6,6 +6,7 @@ library(shinyWidgets)
 library(DT)
 library(waiter)
 library(shinythemes)
+library(shinyMobile)
 
 # import dataframe of word-phonemes mappings
 word_phonemes_df = fread('data/word_phonemes.csv', colClasses = 'character')

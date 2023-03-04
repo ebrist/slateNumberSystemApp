@@ -7,127 +7,17 @@ function(input, output, session) {
   max_page_number <- reactiveVal(1)
   results_length <- reactiveVal(NULL)
   
-  output$app_ui <- renderUI({
+  output$theme <- renderUI({
     req(theme_css())
-    print('app_ui')
-    fluidPage(
-      id = 'app_div',
-      theme = shinytheme('yeti'),
-      includeCSS(theme_css()),
-      navbarPage(
-        title = 'Slate System App',
-        id = 'app_navbar', 
-        tabPanel(
-          title = 'Slate System', 
-          value = 'system',
-          column(
-            width = 10,
-            offset = 1,
-            fluidRow(
-              style = "margin-top:5px;",
-              div(style="display: inline-block;vertical-align:top;", tags$p(style = "margin-top: 10px;margin-right: 5px;", 'Enter a number:')),
-              div(style="display: inline-block;vertical-align:top;", uiOutput("input_number_ui")),
-              div(style="display: inline-block;vertical-align:top;", actionButton('convert', 'Convert', width = '100px')), 
-              div(style="display: inline-block;vertical-align:top;", actionButton('convert_previous', 'Previous', width = '100px')),
-              div(style="display: inline-block;vertical-align:top;", actionButton('convert_next', 'Next', width = '100px')),
-              div(
-                style="display: inline-block;vertical-align:top;margin-bottom: 15px;margin-bottom: 10px;margin-top: 10px;margin-left: 50px;", 
-                materialSwitch(
-                  inputId = "stress",
-                  label = "Stress Markers", 
-                  value = FALSE,
-                  status = "primary"
-                )
-              )
-            ),
-            fluidRow(
-              uiOutput('error')
-            ),
-            uiOutput('phonemes'),
-            br(),
-            fluidRow(
-              div(style="display: inline-block;vertical-align:top; margin-top: 10px; font-size: 15px; margin-right: 10px;", uiOutput('results_info')),
-              div(
-                style="display: inline-block;vertical-align:top;font-size: 15px; margin-right: 10px;", 
-                div(
-                  style = '
-                    display: flex;
-                    flex-direction: row;
-                    gap: 5px;
-                  ',
-                  tags$p(style = "margin-top: 10px", 'Show'),
-                  uiOutput('page_length_ui'),
-                  tags$p(style = "margin-top: 10px", 'results per page.')
-                )
-              ),
-              div(
-                style="display: inline-block;vertical-align:top;font-size: 15px; float: right;", 
-                div(
-                  style = '
-                    display: flex;
-                    flex-direction: row;
-                    gap: 5px;
-                  ',
-                  div(style="display: inline-block;vertical-align:top; margin-top: 10px; margin-right: 5px;", uiOutput('page_number_info')), 
-                  div(style="display: inline-block;vertical-align:top;", actionButton('previous_page', 'Previous', width = '100px')), 
-                  uiOutput('page_number_ui'),
-                  div(style="display: inline-block;vertical-align:top;", actionButton('go', 'Search', width = '120px')), 
-                  div(style="display: inline-block;vertical-align:top;", actionButton('next_page', 'Next', width = '100px')) 
-                )
-              )
-            ),
-            fluidRow(DT::DTOutput('table')),
-            fluidRow(
-              style = "margin-top: 10px;",
-              div(style="display: inline-block;vertical-align:top; margin-top: 10px; font-size: 15px; margin-right: 10px;", uiOutput('results_info2')),
-              div(
-                style="display: inline-block;vertical-align:top;font-size: 15px; margin-right: 10px;", 
-                div(
-                  style = '
-                    display: flex;
-                    flex-direction: row;
-                    gap: 5px;
-                  ',
-                  tags$p(style = "margin-top: 10px", 'Show'),
-                  uiOutput('page_length_ui2'),
-                  tags$p(style = "margin-top: 10px", 'results per page.')
-                )
-              ),
-              div(
-                style="display: inline-block;vertical-align:top;font-size: 15px; float: right;", 
-                div(
-                  style = '
-                    display: flex;
-                    flex-direction: row;
-                    gap: 5px;
-                  ',
-                  div(style="display: inline-block;vertical-align:top; margin-top: 10px; margin-right: 5px;", uiOutput('page_number_info2')), 
-                  div(style="display: inline-block;vertical-align:top;", actionButton('previous_page2', 'Previous', width = '100px')), 
-                  uiOutput('page_number_ui2'),
-                  div(style="display: inline-block;vertical-align:top;", actionButton('go2', 'Search', width = '120px')), 
-                  div(style="display: inline-block;vertical-align:top;", actionButton('next_page2', 'Next', width = '100px')) 
-                )
-              )
-            ),
-            br(),
-            br(),
-            br()
-          )
-        ),
-        tabPanel('System Key', value = 'key',
-                 column(12, includeHTML("pages/System Key.html"), br(), br())       
-        )
-      )
-    )
+    div(includeCSS(theme_css()))
   })
   
   # render the input box for input_number
   output$input_number_ui <- renderUI({
     req(input_number())
-    print('input_number_ui')
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:150px;">
+        <div class="form-group shiny-input-container" style="width:82px;">
           <label class="control-label shiny-label-null" for="number" id="number-label"></label>
           <input id="number" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -138,7 +28,6 @@ function(input, output, session) {
   
   output$error <- renderUI({
     req(input$number)
-    print('error')
     error <- F
     if (nchar(input$number) == 0) {
       error <- T
@@ -166,28 +55,24 @@ function(input, output, session) {
   output$results_info <- renderUI({
     req(results_length())
     isolate(req(input_number()))
-    print('results_info')
     HTML(paste0('There are <b>', results_length(), '</b> total results.'))
   })
   
   output$results_info2 <- renderUI({
     req(results_length())
     isolate(req(input_number()))
-    print('results_info2')
     HTML(paste0('There are <b>', results_length(), '</b> total results.'))
   })
   
   output$page_length_ui <- renderUI({
     req(page_length())
     isolate(req(input_number()))
-    print('page_length_ui')
     selectInput('page_length', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '80px')
   })
   
   output$page_length_ui2 <- renderUI({
     req(page_length())
     isolate(req(input_number()))
-    print('page_length_ui2')
     selectInput('page_length2', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '80px')
   })
   
@@ -195,7 +80,6 @@ function(input, output, session) {
     req(page_number(), max_page_number())
     req(page_number() <= max_page_number())
     isolate(req(input_number()))
-    print('page_number_info')
     HTML(paste0('Showing Page ', page_number(), ' of ', max_page_number()))
   })
   
@@ -204,14 +88,12 @@ function(input, output, session) {
     req(page_number(), max_page_number())
     req(page_number() <= max_page_number())
     isolate(req(input_number()))
-    print('page_number_info2')
     HTML(paste0('Showing Page ', page_number(), ' of ', max_page_number()))
   })
   
   output$page_number_ui <- renderUI({
     req(page_number(), max_page_number())
     isolate(req(input_number()))
-    print('page_number_ui')
     if (page_number() >= max_page_number()) {
       selected_page <- max_page_number()
     } else if (page_number() < 1) {
@@ -233,7 +115,6 @@ function(input, output, session) {
   output$page_number_ui2 <- renderUI({
     req(page_number(), max_page_number())
     isolate(req(input_number()))
-    print('page_number_ui2')
     if (page_number() >= max_page_number()) {
       selected_page <- max_page_number()
     } else if (page_number() < 1) {
@@ -254,7 +135,6 @@ function(input, output, session) {
   
   # monitor changes to convert_previous button
   observeEvent(input$convert_previous, {
-    print('obs convert_previous')
     int_number <- as.integer(input_number())
     len_number <- nchar(input_number())
     new_number <- min(max(0, int_number - 1), 9999)
@@ -263,7 +143,6 @@ function(input, output, session) {
   
   # monitor changes to convert_next button
   observeEvent(input$convert_next, {
-    print('obs convert_next')
     int_number <- as.integer(input_number())
     len_number <- nchar(input_number())
     new_number <- min(max(0, int_number + 1), 9999)
@@ -272,7 +151,6 @@ function(input, output, session) {
   
   # monitor changes to convert button
   observeEvent(input$convert, {
-    print('obs convert')
     req(input$number)
     error <- F
     if (nchar(input$number) == 0) {
@@ -296,7 +174,6 @@ function(input, output, session) {
   input_phonemes <- reactive({
     # when input_number changes, update input_phonemes
     req(input_number())
-    print('input_phonemes')
     get_phonemes(input_number())
   })
   
@@ -305,8 +182,6 @@ function(input, output, session) {
   results <- reactive({
     # when input_phonemes changes, update results
     req(input_phonemes(), is.logical(input$stress))
-    print('results')
-    page_number(1)
     df <- get_results(input_phonemes(), word_phonemes_df, input$stress) %>%
       distinct(word, .keep_all = T) %>%
       mutate(
@@ -328,14 +203,12 @@ function(input, output, session) {
   # track the total number of results
   results_length <- reactive({
     req(results())
-    print('results_length')
     nrow(results())
   })
   
   # render phonemes ui
   output$phonemes <- renderUI({
     req(input_number(), input_phonemes())
-    print('phonemes')
     HTML(paste0("<p> Phonemes for number ", input_number(), 
                 " = "), "[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ] & [ "), fixed("-"), " - "), " ]</p>")
   })
@@ -363,24 +236,19 @@ function(input, output, session) {
   
   # render results table
   output$table <- DT::renderDataTable({
-    print('render table request')
     waiter::waiter_hide()
     # only react to table_data_length() to redraw table, otherwise update data with replaceData
     req(table_data_length())
-    print('render table submit')
-    DT::datatable(isolate(table_data()), escape = F, selection = 'none', width = '100%', rownames = F,
+    DT::datatable(isolate(table_data()), escape = F, selection = 'none', rownames = F,
                   options = list(dom = 't',
                                  pageLength = table_data_length(),  
                                  processing = FALSE,
-                                 autoWidth = TRUE, autoHeight = FALSE, scrollY = T,
-                                 columnDefs = list(list(className = 'dt-left', targets = "_all"),
-                                                   list(width = '19%', targets = list(1:5)))))
+                                 autoWidth = F, autoHeight = FALSE, scrollY = T, scrollX = T))
   })
   
   # update datatable source data when table_data() changes
   proxy <- DT::dataTableProxy('table')
   observe({
-    print('update table_data')
     DT::replaceData(proxy, table_data(), rownames = F)
   })
   
@@ -460,7 +328,7 @@ function(input, output, session) {
     } else {
       page_number(1)
     }
-  })
+  }, ignoreInit = T)
   
   observeEvent(c(input$next_page, input$next_page2), {
     req(page_number(), max_page_number())
@@ -471,7 +339,7 @@ function(input, output, session) {
     } else {
       page_number(max_page_number())
     }
-  })
+  }, ignoreInit = T)
   
   # on session start, extract query string param and look for number and dark theme
   observeEvent(session, {
@@ -528,7 +396,7 @@ function(input, output, session) {
           gap: 10px;
         ',
         tags$p('Dark Mode'),
-        materialSwitch('dark_theme', value = ifelse(theme_css() == 'www/style_dark.css', T, F))
+        materialSwitch('dark_theme', value = ifelse(theme_css() == 'www/style_dark.css', T, F), status = 'info')
       ) 
     } else {
       ui <- div()
