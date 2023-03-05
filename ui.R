@@ -62,30 +62,33 @@ fluidPage(
             uiOutput('phonemes'),
           ),
           fluidRow(
-            div(style="display:inline-block;vertical-align:top;margin-top:9px;font-size:15px;margin-right:10px;margin-bottom:15px;", uiOutput('results_info')),
+            div(style="display:inline-block;vertical-align:top;margin-top:8px;font-size:15px;margin-right:10px;margin-bottom:15px;", uiOutput('results_info')),
             div(
               style="display:inline-block;vertical-align:top;font-size:15px;margin-right:10px;", 
               div(
                 style='display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;',
-                div(style="margin-top:9px", tags$p('Show')),
+                div(style="margin-top:8px", tags$p('Show')),
                 div(style="margin-bottom:-25px", uiOutput('page_length_ui')),
-                div(style="margin-top:9px;margin-bottom:20px;", tags$p('results per page.'))
+                div(style="margin-top:8px;margin-bottom:20px;", tags$p('results per page.'))
               )
             ),
             div(
               style="display:inline-block;vertical-align:top;font-size:15px;float:right;", 
               div(
                 style = 'display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;',
-                div(style="display:inline-block;vertical-align:top;margin-top:9px;margin-right:5px;padding-bottom:4px;", uiOutput('page_number_info')), 
+                div(style="display:inline-block;vertical-align:top;margin-top:8px;margin-right:5px;padding-bottom:4px;", uiOutput('page_number_info')), 
                 div(
                   style="display:inline-block;vertical-align:",
-                  div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('previous_page', 'Previous', width = '80px')), 
                   div(
                     style="display:inline-block;vertical-align:",
                     div(style="display:inline-block;vertical-align:top;margin-bottom:-15px;padding-bottom:4px;", uiOutput('page_number_ui')),
                     div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('go', 'Search', width = '80px'))
                   ),
-                  div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('next_page', 'Next', width = '80px'))   
+                  div(
+                    style="display:inline-block;vertical-align:",
+                    div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('previous_page', 'Previous', width = '80px')), 
+                    div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('next_page', 'Next', width = '80px'))   
+                  )
                 )
               )
             )
@@ -93,30 +96,33 @@ fluidPage(
           fluidRow(style = 'min-height: 370px;', DT::DTOutput('table')),
           fluidRow(
             style = "padding-top: 15px;",
-            div(style="display:inline-block;vertical-align:top;margin-top:9px;font-size:15px;margin-right:10px;margin-bottom:15px;", uiOutput('results_info2')),
+            div(style="display:inline-block;vertical-align:top;margin-top:8px;font-size:15px;margin-right:10px;margin-bottom:15px;", uiOutput('results_info2')),
             div(
               style="display:inline-block;vertical-align:top;font-size:15px;margin-right:10px;", 
               div(
                 style='display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;',
-                div(style="margin-top:9px", tags$p('Show')),
+                div(style="margin-top:8px", tags$p('Show')),
                 div(style="margin-bottom:-25px", uiOutput('page_length_ui2')),
-                div(style="margin-top:9px;margin-bottom:20px;", tags$p('results per page.'))
+                div(style="margin-top:8px;margin-bottom:20px;", tags$p('results per page.'))
               )
             ),
             div(
               style="display:inline-block;vertical-align:top;font-size:15px;float:right;", 
               div(
                 style = 'display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;',
-                div(style="display:inline-block;vertical-align:top;margin-top:9px;margin-right:5px;padding-bottom:4px;", uiOutput('page_number_info2')), 
+                div(style="display:inline-block;vertical-align:top;margin-top:8px;margin-right:5px;padding-bottom:4px;", uiOutput('page_number_info2')), 
                 div(
                   style="display:inline-block;vertical-align:",
-                  div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('previous_page2', 'Previous', width = '80px')), 
                   div(
                     style="display:inline-block;vertical-align:",
                     div(style="display:inline-block;vertical-align:top;margin-bottom:-15px;padding-bottom:4px;", uiOutput('page_number_ui2')),
                     div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('go2', 'Search', width = '80px'))
                   ),
-                  div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('next_page2', 'Next', width = '80px'))   
+                  div(
+                    style="display:inline-block;vertical-align:",
+                    div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('previous_page2', 'Previous', width = '80px')), 
+                    div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('next_page2', 'Next', width = '80px'))   
+                  )
                 )
               )
             )
