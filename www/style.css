@@ -141,7 +141,11 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 .selectize-input > * {
     vertical-align: middle;
-    font-size: 13px;
+    font-size: 16px;
+}
+
+.selectize-dropdown.single.plugin-selectize-plugin-a11y {
+    font-size: 16px;
 }
 
 .label-info {
@@ -183,13 +187,14 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 .form-control {
     height: 36px;
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 14px;
 }
 
 .selectize-input {
     border: 1px solid #cccccc;
     padding: 4px 12px;
+    font-size: 16px;
 }
 
 .navbar-default {
