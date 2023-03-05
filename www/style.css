@@ -158,4 +158,5 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 #keep_alive {
   visibility: hidden;
+  height: 0;
 }
