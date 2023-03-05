@@ -210,7 +210,7 @@ function(input, output, session) {
   output$phonemes <- renderUI({
     req(input_number(), input_phonemes())
     HTML(paste0("<p> Phonemes for number ", input_number(), 
-                " = "), "<nobr>[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ] & [ "), fixed("-"), " - "), " ]</nobr></p>")
+                " = "), "<nobr>[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ]</nobr> & <nobr>[ "), fixed("-"), " - "), " ]</nobr></p>")
   })
   
   # reactive dataframe containing the subset of results being displayed in the datatable
