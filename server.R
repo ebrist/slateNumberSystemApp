@@ -103,7 +103,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:100px;">
+        <div class="form-group shiny-input-container" style="width:90px;">
           <label class="control-label shiny-label-null" for="page" id="page-label"></label>
           <input id="page" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -124,7 +124,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:100px;">
+        <div class="form-group shiny-input-container" style="width:90px;">
           <label class="control-label shiny-label-null" for="page2" id="page2-label"></label>
           <input id="page2" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -345,7 +345,7 @@ function(input, output, session) {
   observeEvent(session, {
     params <- getQueryString()
     if ('theme' %in% names(params)) {
-      if (params$theme == 'dark') {
+      if (params$theme == 'dark' & input$app_navbar == 'system') {
         theme_css('www/style_dark.css')
       } else {
         theme_css('www/style_light.css')
@@ -375,8 +375,8 @@ function(input, output, session) {
   })
   
   # on input$dark_theme, update theme_css
-  observeEvent(input$dark_theme, {
-    if (input$dark_theme) {
+  observeEvent(c(input$app_navbar, input$dark_theme), {
+    if (input$dark_theme & input$app_navbar == 'system') {
       theme_css('www/style_dark.css')
     } else {
       theme_css('www/style_light.css')
@@ -403,5 +403,14 @@ function(input, output, session) {
     }
     
     return(ui)
+  })
+  
+  output$system_key <- renderImage({
+    list(src = ifelse(theme_css() == 'www/style_dark.css', 'www/system_key_dark.png', 'www/system_key_white.png'))
+  })
+  
+  output$keep_alive <- renderText({
+    req(input$alive_count)
+    input$alive_count
   })
 }

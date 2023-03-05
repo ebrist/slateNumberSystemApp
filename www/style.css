@@ -1,6 +1,6 @@
 #dark_theme_container {
   top: 12px;
-  right: 50px;
+  right: 15px;
   position: absolute;
   z-index: 99999;
   color: white;
@@ -11,14 +11,28 @@
     height: 70px;
   }
   #dark_theme_container {
-    top: 45px;
+    top: 42px;
     left: 15px;
     right: none;
   }
 }
 
+.navbar-nav {
+  margin: 0;
+}
+
+ul#app_navbar {
+    padding: 0;
+}
+
 .navbar-default {
     overflow: hidden;
+    width: 100vw;
+}
+
+.ritz.grid-container {
+    background: #ffffff;
+    overflow: auto;
 }
     
 p {
@@ -61,6 +75,11 @@ ul.nav.navbar-nav {
     display: none;
 }
 
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .column-headers-background {
     display: none;
 }
@@ -100,10 +119,6 @@ label, .control-label, .help-block, .checkbox, .radio {
     font-weight: normal;
 }
 
-.ritz.grid-container {
-  background: #ffffff;
-}
-
 table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:before, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:before, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:before, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:before, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:before, table.dataTable thead>tr>td.sorting_desc_disabled:after {
     position: absolute;
     display: block;
@@ -139,4 +154,8 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 .material-switch>label:before {
     background: #cdcdcd;
+}
+
+#keep_alive {
+  visibility: hidden;
 }
