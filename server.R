@@ -19,7 +19,8 @@ function(input, output, session) {
       sprintf('
         <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="number" id="number-label"></label>
-          <input id="number" type="text" class="form-control" value="%s"
+          <input id="number" type="text" class="form-control" value="%s" 
+                 onfocus="this.setSelectionRange(0, this.value.length)"
                  autocomplete="off"/>
         </div>        
       ', input_number())
@@ -106,6 +107,7 @@ function(input, output, session) {
         <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="page" id="page-label"></label>
           <input id="page" type="text" class="form-control" value="%s"
+                 onfocus="this.setSelectionRange(0, this.value.length)"
                  autocomplete="off"/>
         </div>        
       ', selected_page)
@@ -127,6 +129,7 @@ function(input, output, session) {
         <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="page2" id="page2-label"></label>
           <input id="page2" type="text" class="form-control" value="%s"
+                 onfocus="this.setSelectionRange(0, this.value.length)"
                  autocomplete="off"/>
         </div>        
       ', selected_page)
