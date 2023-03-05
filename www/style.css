@@ -17,6 +17,13 @@
   }
 }
 
+/* navbar */
+
+
+.navbar-nav>li {
+    text-align: center;
+}
+
 .navbar-nav {
   margin: 0;
 }
@@ -28,6 +35,31 @@ ul#app_navbar {
 .navbar-default {
     overflow: hidden;
     width: 100vw;
+    background-color: #004970;
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+}
+
+.navbar-header, .tab-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ul.nav.navbar-nav {
+    font-size: 16px;
+    padding-left: 15px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+    background-color: #09385c;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #ffffff;
+    background-color: #005583;
 }
 
 .ritz.grid-container {
@@ -49,26 +81,11 @@ tr.even, tr.odd {
 
 .container-fluid {
   padding: 0px;
-  /*overflow: scroll;*/
 }
 
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: 0px;
-}
 
 .btn:focus-visible {
   outline: none !important;
-}
-
-
-.navbar-header, .tab-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-ul.nav.navbar-nav {
-    font-size: 16px;
-    padding-left: 15px;
 }
 
 .row-header-wrapper {
@@ -90,14 +107,6 @@ ul.nav.navbar-nav {
 
 .well {
     min-height: 100vh;
-}
-
-ul.nav.navbar-nav {
-    font-size: 16px;
-}
-
-.navbar-nav>li {
-    text-align: center;
 }
 
 .dataTables_wrapper {
@@ -127,6 +136,10 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
     font-size: 12px;
 }
 
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #000000;
+}
+
 .bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
     position: absolute;
     display: inline-block;
@@ -137,6 +150,7 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 .selectize-input.items.full.has-options.has-items {
     height: 34px;
     border-radius: 0px;
+    font-size: 16px;
 }
 
 .selectize-input > * {
@@ -177,12 +191,18 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 .btn-default:active:hover,
 .open>.dropdown-toggle.btn-default:hover,
 .btn-default:active:focus,
-.open>.dropdown-toggle.btn-default.focus,
+.open>.dropdown-toggle.btn-default.focus {
+    font-size: 13px;
+}
+
 .selectize-input, 
 .selectize-control.single .selectize-input.input-active,
 .selectize-dropdown, 
-.selectize-dropdown.form-control {
-    font-size: 13px;
+.selectize-dropdown.form-control,
+.selectize-control.single .selectize-input, .selectize-control.single .selectize-input input,
+.selectize-dropdown-content,
+.selectize-dropdown [data-selectable], .selectize-dropdown .optgroup-header {
+  font-size: 16px;
 }
 
 .form-control {
@@ -197,23 +217,6 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
     font-size: 16px;
 }
 
-.navbar-default {
-    background-color: #004970;
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-    color: #ffffff;
-    background-color: #09385c;
-}
-
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: #ffffff;
-    background-color: #005583;
-}
-
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
-  color: #000000;
-}
 
 .btn-default:hover, .btn-default:focus, .btn-default.focus {
     outline: none;
