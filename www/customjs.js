@@ -3,8 +3,12 @@ var n = 0;
 
 $(document).on('shiny:connected', function(event) {
   socket_timeout_interval = setInterval(function() {
-    Shiny.setInputValue('keepalive', n++);
-  }, 1000*55);
+    Shiny.onInputChange('alive_count', n++)
+  }, 10000);
+});
+
+$(document).on('shiny:disconnected', function(event) {
+  clearInterval(socket_timeout_interval)
 });
 
 $(document).keyup(function(event) {
