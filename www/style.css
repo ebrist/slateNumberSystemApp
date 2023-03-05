@@ -6,7 +6,7 @@
   color: white;
 }
 
-@media (max-width:375px) {
+@media (max-width:325px) {
   .container>.navbar-header, .container-fluid>.navbar-header {
     height: 70px;
   }
@@ -135,13 +135,13 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 }
 
 .selectize-input.items.full.has-options.has-items {
-    height: 39px;
+    height: 34px;
     border-radius: 0px;
 }
 
 .selectize-input > * {
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .label-info {
@@ -159,4 +159,62 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 #keep_alive {
   visibility: hidden;
   height: 0;
+}
+
+.btn-default,
+.selectize-input.full,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.bootstrap-select>.dropdown-toggle.bs-placeholder,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:active,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select>.dropdown-toggle.bs-placeholder:hover,
+.btn-default:active, .btn-default.active,
+.open>.dropdown-toggle.btn-default,
+.btn-default:active:hover,
+.open>.dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.open>.dropdown-toggle.btn-default.focus,
+.selectize-input, 
+.selectize-control.single .selectize-input.input-active,
+.selectize-dropdown, 
+.selectize-dropdown.form-control {
+    font-size: 13px;
+}
+
+.form-control {
+    height: 36px;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.selectize-input {
+    border: 1px solid #cccccc;
+    padding: 4px 12px;
+}
+
+.navbar-default {
+    background-color: #004970;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+    background-color: #09385c;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #ffffff;
+    background-color: #005583;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #000000;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus {
+    outline: none;
+}
+
+
+.form-group.shiny-input-container, .shiny-input-container:not(.shiny-input-container-inline) {
+  width: inherit;
 }
