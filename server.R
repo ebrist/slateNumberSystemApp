@@ -17,7 +17,7 @@ function(input, output, session) {
     req(input_number())
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:82px;">
+        <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="number" id="number-label"></label>
           <input id="number" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -103,7 +103,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:90px;">
+        <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="page" id="page-label"></label>
           <input id="page" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -124,7 +124,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:90px;">
+        <div class="form-group shiny-input-container" style="width:80px;">
           <label class="control-label shiny-label-null" for="page2" id="page2-label"></label>
           <input id="page2" type="text" class="form-control" value="%s"
                  autocomplete="off"/>
@@ -210,7 +210,7 @@ function(input, output, session) {
   output$phonemes <- renderUI({
     req(input_number(), input_phonemes())
     HTML(paste0("<p> Phonemes for number ", input_number(), 
-                " = "), "[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ] & [ "), fixed("-"), " - "), " ]</p>")
+                " = "), "<nobr>[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ] & [ "), fixed("-"), " - "), " ]</nobr></p>")
   })
   
   # reactive dataframe containing the subset of results being displayed in the datatable
