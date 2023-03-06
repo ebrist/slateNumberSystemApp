@@ -53,88 +53,6 @@ function(input, output, session) {
     }
   })
   
-  output$results_info <- renderUI({
-    req(results_length())
-    isolate(req(input_number()))
-    HTML(paste0('There are <b>', results_length(), '</b> total results.'))
-  })
-  
-  output$results_info2 <- renderUI({
-    req(results_length())
-    isolate(req(input_number()))
-    HTML(paste0('There are <b>', results_length(), '</b> total results.'))
-  })
-  
-  output$page_length_ui <- renderUI({
-    req(page_length())
-    isolate(req(input_number()))
-    selectInput('page_length', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '70px')
-  })
-  
-  output$page_length_ui2 <- renderUI({
-    req(page_length())
-    isolate(req(input_number()))
-    selectInput('page_length2', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '70px')
-  })
-  
-  output$page_number_info <- renderUI({
-    req(page_number(), max_page_number())
-    req(page_number() <= max_page_number())
-    isolate(req(input_number()))
-    HTML(paste0('Showing Page ', page_number(), ' of ', max_page_number()))
-  })
-  
-  
-  output$page_number_info2 <- renderUI({
-    req(page_number(), max_page_number())
-    req(page_number() <= max_page_number())
-    isolate(req(input_number()))
-    HTML(paste0('Showing Page ', page_number(), ' of ', max_page_number()))
-  })
-  
-  output$page_number_ui <- renderUI({
-    req(page_number(), max_page_number())
-    isolate(req(input_number()))
-    if (page_number() >= max_page_number()) {
-      selected_page <- max_page_number()
-    } else if (page_number() < 1) {
-      selected_page <- 1
-    } else {
-      selected_page <- page_number()
-    }
-    HTML(
-      sprintf('
-        <div class="form-group shiny-input-container" style="width:70px;">
-          <label class="control-label shiny-label-null" for="page" id="page-label"></label>
-          <input id="page" type="text" class="form-control" value="%s"
-                 onfocus="this.setSelectionRange(0, this.value.length)"
-                 autocomplete="off"/>
-        </div>        
-      ', selected_page)
-    )
-  })
-  
-  output$page_number_ui2 <- renderUI({
-    req(page_number(), max_page_number())
-    isolate(req(input_number()))
-    if (page_number() >= max_page_number()) {
-      selected_page <- max_page_number()
-    } else if (page_number() < 1) {
-      selected_page <- 1
-    } else {
-      selected_page <- page_number()
-    }
-    HTML(
-      sprintf('
-        <div class="form-group shiny-input-container" style="width:70px;">
-          <label class="control-label shiny-label-null" for="page2" id="page2-label"></label>
-          <input id="page2" type="text" class="form-control" value="%s"
-                 onfocus="this.setSelectionRange(0, this.value.length)"
-                 autocomplete="off"/>
-        </div>        
-      ', selected_page)
-    )
-  })
   
   # monitor changes to convert_previous button
   observeEvent(input$convert_previous, {
@@ -217,134 +135,26 @@ function(input, output, session) {
                 " = "), "<nobr>[ ", str_replace_all(str_replace_all(input_phonemes(), fixed("|"), " ]</nobr> & <nobr>[ "), fixed("-"), " - "), " ]</nobr></p>")
   })
   
-  # reactive dataframe containing the subset of results being displayed in the datatable
-  # react to page_length(), page_number(), and results()
-  table_data <- reactive({
-    req(page_length(), page_number(), results())
-    start_row <- page_length() * (page_number() - 1) + 1
-    end_row <- page_length() * page_number()
-    out <- results()[start_row:end_row, ]
-    # fill NA rows with empty strings
-    out[is.na(out)] <- ''
-    out
-  })
-  
-  # react to table_data() and update table_data_length()
-  observeEvent(table_data(), {
-    req(table_data_length(), table_data())
-    if (table_data_length() != nrow(table_data())) {
-      table_data_length(nrow(table_data()))  
-    }
-  })
-  
-  
   # render results table
   output$table <- DT::renderDataTable({
     waiter::waiter_hide()
-    # only react to table_data_length() to redraw table, otherwise update data with replaceData
-    req(table_data_length())
-    DT::datatable(isolate(table_data()), escape = F, selection = 'none', rownames = F,
-                  options = list(dom = 't',
-                                 ordering = F,
-                                 pageLength = table_data_length(),  
-                                 processing = FALSE,
-                                 autoWidth = F, autoHeight = FALSE, scrollY = T, scrollX = T))
+    req(results())
+    DT::datatable(results(), escape = F, rownames = F, selection = 'none',
+                  plugins = 'input', 
+                  options = list(pagingType = 'input', 
+                                 pageLength = isolate(page_length()),
+                                 dom = "<'row'lip><'row'tr><'row'lip>",
+                                 autoWidth = F, 
+                                 autoHeight = FALSE, 
+                                 scrollY = T, 
+                                 scrollX = T))
   })
   
-  # update datatable source data when table_data() changes
-  proxy <- DT::dataTableProxy('table')
-  observe({
-    DT::replaceData(proxy, table_data(), rownames = F)
-  })
-  
-  observeEvent(input$page_length, {
-    req(!is.na(suppressWarnings(is.integer(input$page_length))), page_length())
-    if (as.integer(input$page_length) != page_length()) {
-      page_length(as.integer(input$page_length))  
-    }
-  }, ignoreInit = T)
-  
-  observeEvent(input$page_length2, {
-    req(!is.na(suppressWarnings(is.integer(input$page_length2))), page_length())
-    if (as.integer(input$page_length2) != page_length()) {
-      page_length(as.integer(input$page_length2))  
-    }
-  }, ignoreInit = T)
-  
-  observeEvent(page_length(), {
-    req(results_length(), page_length(), max_page_number())
-    if (max(ceiling(results_length() / page_length()), 1) != max_page_number()) {
-      max_page_number(max(ceiling(results_length() / page_length()), 1))
+  observeEvent(input$table_rows_current, {
+    if (length(input$table_rows_current) != page_length()) {
+      page_length(length(input$table_rows_current))
     }
   })
-  
-  observeEvent(results_length(), {
-    req(page_length(), results_length(), max_page_number())
-    if (max(ceiling(results_length() / page_length()), 1) != max_page_number()) {
-      max_page_number(max(ceiling(results_length() / page_length()), 1)) 
-    }
-  })
-  
-  observeEvent(max_page_number(), {
-    req(page_number(), max_page_number())
-    if (page_number() > max_page_number()) {
-      page_number(max_page_number())
-    }
-  })
-  
-  observeEvent(input$go, {
-    req(max_page_number(), input$page)
-    req(!is.na(suppressWarnings(as.integer(input$page))))
-    if (suppressWarnings(as.integer(input$page)) < 1) {
-      updateTextInput(inputId = 'page', value = '1')
-      updateTextInput(inputId = 'page2', value = '1')
-      page_number(1)
-    } else if (suppressWarnings(as.integer(input$page)) > max_page_number()) {
-      updateTextInput(inputId = 'page', value = as.character(max_page_number()))
-      updateTextInput(inputId = 'page2', value = as.character(max_page_number()))
-      page_number(max_page_number())
-    } else {
-      page_number(suppressWarnings(as.integer(input$page)))
-    }
-  })
-  
-  observeEvent(input$go2, {
-    req(max_page_number(), input$page2)
-    req(!is.na(suppressWarnings(as.integer(input$page2))))
-    if (suppressWarnings(as.integer(input$page2)) < 1) {
-      updateTextInput(inputId = 'page', value = '1')
-      updateTextInput(inputId = 'page2', value = '1')
-      page_number(1)
-    } else if (suppressWarnings(as.integer(input$page2)) > max_page_number()) {
-      updateTextInput(inputId = 'page', value = as.character(max_page_number()))
-      updateTextInput(inputId = 'page2', value = as.character(max_page_number()))
-      page_number(max_page_number())
-    } else {
-      page_number(suppressWarnings(as.integer(input$page2)))
-    }
-  })
-  
-  observeEvent(c(input$previous_page, input$previous_page2), {
-    req(page_number(), max_page_number())
-    if (page_number() > max_page_number()) {
-      page_number(max_page_number())
-    } else if (page_number() >= 2) {
-      page_number(page_number() - 1)
-    } else {
-      page_number(1)
-    }
-  }, ignoreInit = T)
-  
-  observeEvent(c(input$next_page, input$next_page2), {
-    req(page_number(), max_page_number())
-    if (page_number() < 1L) {
-      page_number(1L)
-    } else if (page_number() < max_page_number()) {
-      page_number(page_number() + 1)
-    } else {
-      page_number(max_page_number())
-    }
-  }, ignoreInit = T)
   
   # on session start, extract query string param and look for number and dark theme
   observeEvent(session, {

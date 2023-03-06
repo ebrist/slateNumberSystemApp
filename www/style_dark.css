@@ -1,3 +1,19 @@
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active, .dataTables_wrapper .dataTables_paginate .paginate_button, input.paginate_input, .dataTables_wrapper .dataTables_length select {
+    color: #d5d5d5;
+    background: none;
+    background-color: #15303e;
+    border-color: #103754;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:active,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #12242e !important;
+    border-color: #103754 !important;
+    color: #d5d5d5 !important;
+}
+
+
 .navbar-default {
     background-color: #004970;
 }
