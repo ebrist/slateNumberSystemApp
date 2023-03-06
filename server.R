@@ -17,7 +17,7 @@ function(input, output, session) {
     req(input_number())
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:80px;">
+        <div class="form-group shiny-input-container" style = "width: 70px;">
           <label class="control-label shiny-label-null" for="number" id="number-label"></label>
           <input id="number" type="text" class="form-control" value="%s" 
                  onfocus="this.setSelectionRange(0, this.value.length)"
@@ -68,13 +68,13 @@ function(input, output, session) {
   output$page_length_ui <- renderUI({
     req(page_length())
     isolate(req(input_number()))
-    selectInput('page_length', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '80px')
+    selectInput('page_length', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '70px')
   })
   
   output$page_length_ui2 <- renderUI({
     req(page_length())
     isolate(req(input_number()))
-    selectInput('page_length2', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '80px')
+    selectInput('page_length2', NULL, choices = c(10, 25, 50, 100), selected = page_length(), width = '70px')
   })
   
   output$page_number_info <- renderUI({
@@ -104,7 +104,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:80px;">
+        <div class="form-group shiny-input-container" style="width:70px;">
           <label class="control-label shiny-label-null" for="page" id="page-label"></label>
           <input id="page" type="text" class="form-control" value="%s"
                  onfocus="this.setSelectionRange(0, this.value.length)"
@@ -126,7 +126,7 @@ function(input, output, session) {
     }
     HTML(
       sprintf('
-        <div class="form-group shiny-input-container" style="width:80px;">
+        <div class="form-group shiny-input-container" style="width:70px;">
           <label class="control-label shiny-label-null" for="page2" id="page2-label"></label>
           <input id="page2" type="text" class="form-control" value="%s"
                  onfocus="this.setSelectionRange(0, this.value.length)"
@@ -195,6 +195,7 @@ function(input, output, session) {
       select(
         ` `, word, phonemes, position, n_phonemes, n_letters
       ) %>%
+      arrange(` `) %>%
       as.data.table()
     # update names
     names(df) <- c(" ", "Word", "All Phonemes in Word", "Position of Matching Phonemes",
@@ -244,6 +245,7 @@ function(input, output, session) {
     req(table_data_length())
     DT::datatable(isolate(table_data()), escape = F, selection = 'none', rownames = F,
                   options = list(dom = 't',
+                                 ordering = F,
                                  pageLength = table_data_length(),  
                                  processing = FALSE,
                                  autoWidth = F, autoHeight = FALSE, scrollY = T, scrollX = T))

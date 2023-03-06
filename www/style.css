@@ -35,6 +35,7 @@ ul#app_navbar {
 .navbar-default {
     overflow: hidden;
     width: 100vw;
+    max-width: 100%;
     background-color: #004970;
 }
 
@@ -42,7 +43,7 @@ ul#app_navbar {
     margin-left: 0px;
 }
 
-.navbar-header, .tab-content {
+.navbar-header {
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -65,6 +66,13 @@ ul.nav.navbar-nav {
 .ritz.grid-container {
     background: #ffffff;
     overflow: auto;
+}
+
+.tab-content {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 0;
+    padding-right: 0;
 }
     
 p {
@@ -177,6 +185,11 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 #keep_alive {
   visibility: hidden;
   height: 0;
+}
+
+.btn {
+  width: 70px;
+  padding: 8px 0;
 }
 
 .btn-default,
