@@ -44,6 +44,10 @@ body {
   color: #d7d7d7;
 }
 
+a {
+  color: #31beed;
+}
+
 .form-group.shiny-input-container, .shiny-input-container:not(.shiny-input-container-inline) {
   width: inherit;
 }
