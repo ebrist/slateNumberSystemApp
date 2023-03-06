@@ -151,8 +151,8 @@ function(input, output, session) {
   })
   
   observeEvent(input$table_rows_current, {
-    if (length(input$table_rows_current) != page_length()) {
-      page_length(length(input$table_rows_current))
+    if (input$table_state$length != page_length()) {
+      page_length(input$table_state$length)
     }
   })
   
