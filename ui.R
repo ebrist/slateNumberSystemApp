@@ -18,10 +18,10 @@ fluidPage(
     id = 'app_div',
     theme = shinytheme('yeti'),
     navbarPage(
-      title = 'Slate System App',
+      title = 'Slate System',
       id = 'app_navbar', 
       tabPanel(
-        title = 'Slate System', 
+        title = 'Word Generator', 
         value = 'system',
         fluidRow(
           style = "margin-top:5px;",
@@ -38,16 +38,6 @@ fluidPage(
               div(style="display:inline-block;vertical-align:top;padding-bottom:4px;", actionButton('convert_previous', 'Previous')),
               div(style="display:inline-block;vertical-align:top;padding-bottom:4px;padding-right:7px;", actionButton('convert_next', 'Next'))
             )
-          ),
-          div(
-            class = 'dark-theme-toggle',
-            style="display:inline-block;vertical-align:top;margin-bottom:0px;margin-bottom:1px;margin-top:8px;", 
-            materialSwitch(
-              inputId = "stress",
-              label = "Stress Markers", 
-              value = FALSE,
-              status = "info"
-            )
           )
         ),
         fluidRow(
@@ -59,7 +49,21 @@ fluidPage(
         ),
         fluidRow(style = 'min-height: 370px;', DT::DTOutput('table')),
         div(
-          style = 'height: 200px;'
+          style = 'height: 20px;'
+        ),
+        hr(),
+        div(
+          h4("Options"),
+          materialSwitch(
+            inputId = "stress",
+            label = "Show Stress Markers", 
+            value = FALSE,
+            status = "info"
+          )
+        ),
+        hr(),
+        div(
+          style = 'height: 20px;'
         )
       ),
       tabPanel(

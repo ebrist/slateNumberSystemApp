@@ -9,6 +9,7 @@ input.paginate_input {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
 }
 
+
 .dataTables_wrapper .dataTables_info {
     display: inline-block;
     clear: none;
@@ -61,12 +62,13 @@ label, .dataTables_wrapper .dataTables_length select {
     text-align: left;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 573px) {
   .dataTables_wrapper .dataTables_paginate {
       float: left !important;
       text-align: left;
   }
 }
+
 #dark_theme_container {
   top: 12px;
   right: 15px;

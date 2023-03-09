@@ -28,3 +28,7 @@ $(document).keyup(function(event) {
     $("#go2").click();
   };
 });
+
+$("input[type=text]").focus(function() {
+   $(this).select();
+});
