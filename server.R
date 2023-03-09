@@ -143,7 +143,7 @@ function(input, output, session) {
                   plugins = 'input', 
                   options = list(pagingType = 'input', 
                                  pageLength = isolate(page_length()),
-                                 dom = "<'row'lip><'row'tr><'row'lip>",
+                                 dom = "<'row'ip><'row'tr><'row'lip>",
                                  autoWidth = F, 
                                  autoHeight = FALSE, 
                                  scrollY = T, 
