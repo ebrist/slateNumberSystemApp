@@ -73,6 +73,14 @@ fluidPage(
           br(), 
           br()
         )       
+      ),
+      tabPanel(
+        title = 'Famous Figures System', value = 'figures',
+        div(
+          tags$img(src = "Famous_Figures_Memory_System.jpg", style = 'max-width: 100%'), 
+          br(), 
+          br()
+        )       
       )
     )
   )
