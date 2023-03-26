@@ -87,7 +87,10 @@ fluidPage(
               label = icon('search')
             )
           ),
-          tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%')
+          tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%'),
+          br(),
+          br(),
+          br()
         )
       )
     )
