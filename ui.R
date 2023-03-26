@@ -76,7 +76,7 @@ fluidPage(
         )       
       ),
       tabPanel(
-        title = 'Famous Figures System', value = 'figures',
+        title = 'Famous Figures', value = 'figures',
         column(
           width = 12,
           align = 'center',
