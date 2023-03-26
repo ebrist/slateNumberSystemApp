@@ -62,6 +62,12 @@ label, .dataTables_wrapper .dataTables_length select {
     text-align: left;
 }
 
+@media (max-width: 767px) {
+  #zoom_switch_div {
+    display: none;  
+  }
+}
+
 @media (max-width: 573px) {
   .dataTables_wrapper .dataTables_paginate {
       float: left !important;
@@ -313,20 +319,4 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 .form-group.shiny-input-container, .shiny-input-container:not(.shiny-input-container-inline) {
   width: inherit;
-}
-
-* {box-sizing: border-box;}
-
-.img-magnifier-container {
-  position:relative;
-}
-
-.img-magnifier-glass {
-  position: absolute;
-  border: 3px solid #000;
-  border-radius: 50%;
-  cursor: none;
-  /*Set the size of the magnifier glass:*/
-  width: 100px;
-  height: 100px;
 }

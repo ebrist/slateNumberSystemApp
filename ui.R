@@ -1,6 +1,7 @@
 fluidPage(
   includeCSS('www/style.css'),
   useWaiter(),
+  shinyjs::useShinyjs(),
   waiter::waiter_show_on_load(
     html = div(
       id = 'spin_wave_preloader',
@@ -76,11 +77,18 @@ fluidPage(
       ),
       tabPanel(
         title = 'Famous Figures System', value = 'figures',
-        div(
-          tags$img(src = "Famous_Figures_Memory_System.jpg", style = 'max-width: 100%'), 
-          br(), 
-          br()
-        )       
+        column(
+          width = 12,
+          align = 'center',
+          div(
+            id = 'zoom_switch_div',
+            switchInput(
+              inputId = "zoom",
+              label = icon('search')
+            )
+          ),
+          tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%')
+        )
       )
     )
   )
