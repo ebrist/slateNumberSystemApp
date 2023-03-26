@@ -90,6 +90,8 @@ fluidPage(
           tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%'),
           br(),
           br(),
+          br(),
+          br(),
           br()
         )
       )
