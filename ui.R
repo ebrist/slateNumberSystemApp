@@ -11,7 +11,9 @@ fluidPage(
     ),
     color = 'white'
   ),
-  tags$head(tags$script(src = "customjs.js")),
+  tags$head(
+    tags$script(src = "customjs.js")
+  ),
   uiOutput('theme'),
   uiOutput('dark_theme_container'),
   textOutput("keep_alive"),
@@ -68,30 +70,11 @@ fluidPage(
         )
       ),
       tabPanel(
-        title = 'System Key', value = 'key',
+        title = HTML("System Key</a></li><li><a href='Famous_Figures_Memory_System.jpg' target='_blank'>Famous Figures"), value = 'key',
         div(
-          includeHTML("pages/System Key.html"), 
+          
+          includeHTML("www/System_Key.html"), 
           br(), 
-          br()
-        )       
-      ),
-      tabPanel(
-        title = 'Famous Figures', value = 'figures',
-        column(
-          width = 12,
-          align = 'center',
-          div(
-            id = 'zoom_switch_div',
-            switchInput(
-              inputId = "zoom",
-              label = icon('search')
-            )
-          ),
-          tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%'),
-          br(),
-          br(),
-          br(),
-          br(),
           br()
         )
       )
