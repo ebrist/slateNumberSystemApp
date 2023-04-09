@@ -188,8 +188,8 @@ function(input, output, session) {
       }
     }
     if ('page' %in% names(params)) {
-      if (params$page == 'system') {
-        updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'system')
+      if (params$page == 'famousfigures') {
+        updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'famousfigures')
       }
       if (params$page == 'key') {
         updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'key')
