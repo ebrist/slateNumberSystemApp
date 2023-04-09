@@ -188,9 +188,12 @@ function(input, output, session) {
       }
     }
     if ('page' %in% names(params)) {
+      if (params$page == 'system') {
+        updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'system')
+      }
       if (params$page == 'key') {
         updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'key')
-      } 
+      }
     }
   })
   
@@ -234,4 +237,19 @@ function(input, output, session) {
     input$alive_count
   })
   
+  output$ffms_css <- renderUI({
+    div(
+      tags$style(
+        HTML(paste0("#ffms {width: ", input$zoom, "%;}"))
+      )
+    )
+  })
+  
+  observeEvent(input$zoom, {
+    if (input$zoom) {
+      shinyjs::runjs('$("img").blowup({"width" : 500, "height" : 500, "round": false, "scale": 0.7});')
+    } else {
+      shinyjs::runjs('document.getElementById("BlowupLens").remove();')
+    }
+  })
 }

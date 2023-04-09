@@ -70,11 +70,27 @@ fluidPage(
         )
       ),
       tabPanel(
-        title = HTML("System Key</a></li><li><a href='Famous_Figures_Memory_System.jpg' target='_blank'>Famous Figures"), value = 'key',
+        title = HTML("System Key"), value = 'key',
         div(
           
           includeHTML("www/System_Key.html"), 
           br(), 
+          br()
+        )
+      ),
+      tabPanel(
+        title = 'Famous Figures', value = 'famousfigures',
+        column(
+          width = 12,
+          align = 'center',
+          tags$a(
+            href = 'Famous_Figures_Memory_System.jpg',
+            tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%')
+          ),
+          br(),
+          br(),
+          br(),
+          br(),
           br()
         )
       )
