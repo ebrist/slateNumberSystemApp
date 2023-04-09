@@ -12,8 +12,7 @@ fluidPage(
     color = 'white'
   ),
   tags$head(
-    tags$script(src = "customjs.js"),
-    tags$meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes")
+    tags$script(src = "customjs.js")
   ),
   uiOutput('theme'),
   uiOutput('dark_theme_container'),
