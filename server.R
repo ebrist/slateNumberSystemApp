@@ -188,9 +188,12 @@ function(input, output, session) {
       }
     }
     if ('page' %in% names(params)) {
+      if (params$page == 'famousfigures') {
+        updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'famousfigures')
+      }
       if (params$page == 'key') {
         updateTabsetPanel(getDefaultReactiveDomain(), 'app_navbar', 'key')
-      } 
+      }
     }
   })
   
@@ -233,5 +236,4 @@ function(input, output, session) {
     req(input$alive_count)
     input$alive_count
   })
-  
 }
