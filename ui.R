@@ -84,7 +84,7 @@ fluidPage(
           width = 12,
           align = 'center',
           tags$a(
-            href = 'Famous_Figures_Memory_System.jpg',
+            href = 'Famous_Figures_Memory_System.jpg',  target = "_blank",
             tags$img(src = "Famous_Figures_Memory_System.jpg", id = 'ffms', style = 'width: 100%')
           ),
           br(),
